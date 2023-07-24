@@ -1,0 +1,83 @@
+
+                            from news.models import*
+                            >>>user1 = User.objects.create(username='Evg', first_name='Gub')
+                            >>>Author.objects.create(authorUser=user1)
+                            >>>user2 = User.objects.create(username=''GGG', first_name='Ghg')
+                            >>>Author.objects.create(authorUser=user2)
+
+                            >>>Category.objects.create(name='Sport')
+                            >>>Category.objects.create(name='Politic')
+                            >>>Category.objects.create(name='Health')
+                            >>>Category.objects.create(name='IT_News')
+
+                            Post.objects.create(author=Author.objects.get(authorUser=User.objects.get(username='Evg')), categoryType='AR', title='First_Artica', text='Text  article.')
+
+                            Post.objects.create(author=Author.objects.get(authorUser=User.objects.get(username='GGG')), categoryType='AR', title='Second_Artical', text='Text  article.')
+                            Post.objects.create(author=Author.objects.get(authorUser=User.objects.get(username='Evg')), categoryType='NW', title='First_News', text='Text  news.')
+                            >>> p1 = Post.objects.get(pk=1)
+                            >>> p2 = Post.objects.get(pk=2)
+                            >>> p3 = Post.objects.get(pk=3)
+
+                            >>>c1 = Category.objects.get(name='Sport')
+                            >>>c2 = Category.objects.get(name='Politic')
+                            >>>c3 = Category.objects.get(name='Health')
+                            >>>c4 = Category.objects.get(name='IT_News')
+
+
+                            >>> p1.postCategory.add(c1)
+                            >>> p2.postCategory.add(c1, c2, c3)
+                            >>> p3.postCategory.add(c3, c2)
+
+
+                            >>>Post.objects.get(pk=1).like()
+                            >>> Post.objects.get(pk=1).like()
+                            >>> Post.objects.get(pk=1).like()
+                            >>> Post.objects.get(pk=1).like()
+                            >>> Post.objects.get(pk=1).like()
+                            >>> Post.objects.get(pk=1).like()
+                            >>> Post.objects.get(pk=2).like()
+                            >>> Post.objects.get(pk=2).like()
+                            >>> Post.objects.get(pk=2).like()
+                            >>> Post.objects.get(pk=2).like()
+                            >>> Post.objects.get(pk=2).like()
+                            >>> Post.objects.get(pk=2).like()
+                            >>> Post.objects.get(pk=2).like()
+                            >>> Post.objects.get(pk=2).like()
+                            >>> Post.objects.get(pk=2).like()
+                            >>> Post.objects.get(pk=3).like()
+                            >>> Post.objects.get(pk=3).like()
+                            >>> Post.objects.get(pk=3).like()
+                            >>>
+                            >>> Post.objects.get(pk=3).like()
+                            >>> Post.objects.get(pk=3).dislike()
+                            >>> Post.objects.get(pk=3).dislike()
+                            >>> Post.objects.get(pk=1).dislike()
+                            >>> Post.objects.get(pk=1).dislike()
+                            >>> Post.objects.get(pk=1).dislike()
+                            >>> Post.objects.get(pk=2).dislike()
+                            >>> Post.objects.get(pk=2).dislike()
+                            >>> Post.objects.get(pk=2).dislike()
+                            >>> Post.objects.get(pk=2).dislike()
+                            >>> Post.objects.get(pk=2).dislike()
+                            >>> Post.objects.get(pk=2).dislike()
+                            >>> Comment.objects.get(pk=1).like()
+                            >>> Comment.objects.get(pk=1).dislike()
+                            >>>
+                            >>> Comment.objects.get(pk=2).like()
+                            >>> Comment.objects.get(pk=2).dislike()
+                            >>> Author.objects.get(authorUser = User.objects.get(username="Evg")).update_rating()
+                            >>> Author.objects.get(authorUser = User.objects.get(username="GGG")).update_rating()
+                            >>> x = Author.objects.get(authorUser = User.objects.get(username="Evg"))
+                            >>> y = Author.objects.get(authorUser = User.objects.get(username="GGG"))
+                            >>> x.ratingAuthor
+                            15
+                            >>> y.ratingAuthor
+                            9
+                            >>> Author.objects.get(authorUser = User.objects.get(username="Evg")).ratingAuthor
+                            15
+                            >>> best = Author.objects.all().order_by('-ratingAuthor').values('authorUser', 'ratingAuthor') [0]
+                            >>> print(best)
+                            {'authorUser': 1, 'ratingAuthor': 15}
+                            >>>
+
+
